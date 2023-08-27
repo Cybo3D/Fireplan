@@ -1,0 +1,257 @@
+:root {
+  --Background-purple:#0C1C1D;
+  --Fire-purple:#01555A;
+  --Highlight-purple:#063032;
+  --Highlight-High-purple:#063032;
+  --White-purple: #0E6D71;
+  --text: #d7eeee;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: sans-serif;
+  font-size: 1em;
+  color: var(--Background-purple);
+}
+
+h1 {
+ font-size: 1.4em;
+}
+
+em {
+  font-style: normal;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+} 
+/* Layout */
+.s-layout {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--Background-purple);
+}
+
+.s-layout__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  background-color: var(--Background-purple);
+  margin-left: 0; /* Add a margin to the left to push content to the right of the sidebar */
+  transition: margin-left 0.3s ease-in; /* Add transition for smooth movement */
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 1%;
+  display: flex; /* Add flex display to align items in a column */
+  flex-direction: column; /* Align items in a column */
+  align-items: center; /* Center items horizontally */
+  transition: 0.3s ease-in-out;
+}
+
+/* Sidebar */
+.s-sidebar__trigger {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4em;
+  background: var(--Fire-purple);
+  
+  
+  display: flex;
+  align-items: center;
+  height: 4em;
+  padding: 20px;
+}
+#icon{
+  color:var(--text);
+}
+.s-sidebar__nav {
+  position: fixed;
+  top: 0;
+  left: -15em;
+  overflow: hidden;
+  transition: all .3s ease-in;
+  width: 15em;
+  height: 100%;
+  background: var(--Fire-purple);
+  color: rgb(255, 255, 255);
+}
+
+.s-sidebar__nav:hover,
+.s-sidebar__nav:focus,
+.s-sidebar__trigger:focus + .s-sidebar__nav,
+.s-sidebar__trigger:hover + .s-sidebar__nav {
+  left: 0;
+}
+
+.s-sidebar__nav ul {
+  position: absolute;
+  top: 4em;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 15em;
+}
+
+.s-sidebar__nav ul li {
+  width: 100%;
+}
+
+.s-sidebar__nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 4em;
+  font-weight: bolder;
+}
+.s-sidebar__nav-link ion-icon {
+  margin-left: 0.5em;
+}
+
+.s-sidebar__nav-link em {
+  position: absolute;
+  top: 50%;
+  left: 4em;
+  transform: translateY(-50%);
+  margin-right: 0.5em;
+}
+
+.s-sidebar__nav-link:hover {
+  background: var(--White-purple);
+}
+
+.s-sidebar__nav-link > i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 4em;
+  height: 4em;
+}
+
+.s-sidebar__nav {
+  /* Existing styles... */
+  transform: translateX(-15em);
+  /* Add the following transition property */
+  transition: transform 0.3s ease-in-out;
+}
+
+.s-sidebar__nav--open {
+  transform: translateX(0);
+}
+.s-trigger__nav--open{
+  width: 100%;
+  width: 15em;
+}
+.TimeAgenda {
+  background-color: var(--White-purple);
+  width: 95%;
+  height: 100%;
+  border-radius: 1rem; 
+}
+.TimeAgenda {
+  background-color: var(--White-purple);
+  width: 95%;
+  height: 100%;
+  border-radius: 1rem; 
+}
+.InfoBar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: var(--Fire-purple);
+  width: 15%;
+  height: 10%;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+.TopBar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: var(--Fire-purple);
+  width: 100%;
+  height: 20%;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+.BottomBar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: var(--Fire-purple);
+  width: 100%;
+  height: 20%;
+}
+.Date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  height: calc(100% - 20%); /* Deduct twice the padding (20px on top + 20px on bottom) from the height */
+  background-color: var(--Highlight-purple);
+  grid-column: span 1;
+  place-self: center;
+  border-radius: 0.5rem;
+  color: var(--text);
+  font-weight: bolder;
+}
+.Date > p.Name{
+  background-color: var(--Highlight-High-purple);
+  padding: 3%;
+  border-radius: 0.5rem;
+  width: 60%;
+  height: 40%;
+  text-align: center;
+}
+.Date > p.Number{
+  background-color: var(--Highlight-High-purple);
+  padding: 5%;
+  padding-top: 3%;
+  padding-bottom: 2%;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  width: 30%;
+  height: 40%;
+  text-align: center;
+}
+.Agenda{
+  width: 100%;
+  height: 50%;
+}
+.GridAgenda{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  width: 100%;
+  height: 80%;
+}
+.GridAgenda > a {
+  outline: var(--Highlight-purple);
+  outline-style: dashed;
+  color: var(--text);
+  font-weight: bold;
+  width: 90%;
+  height: 80%;
+  border-radius: 0.5rem;
+  margin: auto;
+  overflow: hidden;
+}
+
+.GridAgenda > a em {
+  display: block; /* or display: inline-block; */
+  margin-left: 5%;
+  margin-top: 1%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.GridAgenda > a em.Name{
+  font-weight: bolder;
+}

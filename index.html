@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="navbar.css">
+    <script type="module" src="IndexScript.js"></script>
+    <script type="text/javascript" src="PlanAgendaScript.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <div class="s-layout">
+        <!-- Sidebar -->
+        <div class="s-layout__sidebar">
+            <a id="sidebar_trigger"class="s-sidebar__trigger" href="#0" onclick="toggleSidebar()">
+                <ion-icon id="icon" size="large" name="menu" >
+            </a>
+        
+          <nav class="s-sidebar__nav">
+             <ul>
+                <li>
+                    <a class="s-sidebar__nav-link" href="#0">
+                      <em>Profile</em>
+                      <ion-icon id="icon" size="large" name="person-sharp"></ion-icon>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="s-sidebar__nav-link" href="#0">
+                        <em>Planning</em>
+                        <ion-icon id="icon" size="large" name="calendar-sharp"></ion-icon>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" href="#0">
+                        <em>Notes</em>
+                        <ion-icon id="icon" size="large" name="clipboard"></ion-icon>
+                    </a>
+                </li>
+                <li>
+                    <a id="logout"class="s-sidebar__nav-link" href="#0">
+                        <em>LogOut</em>
+                        <ion-icon id="icon" size="large" name="person-sharp"></ion-icon>
+                    </a>
+                </li>
+             </ul>
+          </nav>
+        </div>
+        
+        <!-- Content -->
+        <main class="s-layout__content">
+            <!--put here the stuff body idk gex-->
+            <div class="InfoBar">
+              <a class="Date" href="#" onclick="WeekBack(this.id)">
+                <ion-icon style="width: 100%; height: 100%;" name="caret-back-outline"></ion-icon>
+              </a>
+              <div style="width: 100%;" class="Date">
+                <p id="Month">January</p>
+                <p id="Year">2023</p>
+                <p id="Week">Week 23</p>
+              </div>
+              <a class="Date" href="#" onclick="WeekNext(this.id)">
+                <ion-icon style="width: 100%; height: 100%;" name="caret-forward-outline"></ion-icon>
+              </a>
+            </div>
+              <div class="TimeAgenda">
+                <div class="Agenda">
+                  <div class="TopBar">
+                    <div class="Date">
+                      <p id="Day01Name-0" class="Name">Monday</p>
+                      <p id="Day01Number-0" class="Number">01</p>
+                    </div>
+                    <div class="Date">
+                      <p id="Day02Name-0" class="Name">Tuesday</p>
+                      <p id="Day02Number-0" class="Number">01</p>
+                    </div>
+                    <div class="Date">
+                      <p id="Day03Name-0" class="Name">Wednesday</p>
+                      <p id="Day03Number-0" class="Number">01</p>
+                    </div>
+                    <div class="Date">
+                      <p id="Day04Name-0" class="Name">Thursday</p>
+                      <p id="Day04Number-0" class="Number">01</p>
+                    </div>
+                    <div class="Date">
+                      <p id="Day05Name-0" class="Name">Friday</p>
+                      <p id="Day05Number-0" class="Number">01</p>
+                    </div>
+                    <div class="Date">
+                      <p id="Day06Name-0" class="Name">Saturday</p>
+                      <p id="Day06Number-0" class="Number">01</p>
+                    </div>
+                    <div class="Date">
+                      <p id="Day07Name-0" class="Name">Sunday</p>
+                      <p id="Day07Number-0" class="Number">01</p>
+                    </div>
+                  </div>
+
+                  <div class="GridAgenda">
+                    <a id="1-1-1" href="#" onclick="CreatePlan(this.id)"><em id="1-1-1-Name" class="Name">-</em><em id="1-1-1-Desc"></em></a>
+                    <a id="2-1-1" href="#" onclick="CreatePlan(this.id)"><em id="2-1-1-Name" class="Name">-</em><em id="2-1-1-Desc"></em></a>
+                    <a id="3-1-1" href="#" onclick="CreatePlan(this.id)"><em id="3-1-1-Name" class="Name">-</em><em id="3-1-1-Desc"></em></a>
+                    <a id="4-1-1" href="#" onclick="CreatePlan(this.id)"><em id="4-1-1-Name" class="Name">-</em><em id="4-1-1-Desc"></em></a>
+                    <a id="5-1-1" href="#" onclick="CreatePlan(this.id)"><em id="5-1-1-Name" class="Name">-</em><em id="5-1-1-Desc"></em></a>
+                    <a id="6-1-1" href="#" onclick="CreatePlan(this.id)"><em id="6-1-1-Name" class="Name">-</em><em id="6-1-1-Desc"></em></a>
+                    <a id="7-1-1" href="#" onclick="CreatePlan(this.id)"><em id="7-1-1-Name" class="Name">-</em><em id="7-1-1-Desc"></em></a>
+                    <a id="1-2-1" href="#" onclick="CreatePlan(this.id)"><em id="1-2-1-Name" class="Name">-</em><em id="1-2-1-Desc"></em></a>
+                    <a id="2-2-1" href="#" onclick="CreatePlan(this.id)"><em id="2-2-1-Name" class="Name">-</em><em id="2-2-1-Desc"></em></a>
+                    <a id="3-2-1" href="#" onclick="CreatePlan(this.id)"><em id="3-2-1-Name" class="Name">-</em><em id="3-2-1-Desc"></em></a>
+                    <a id="4-2-1" href="#" onclick="CreatePlan(this.id)"><em id="4-2-1-Name" class="Name">-</em><em id="4-2-1-Desc"></em></a>
+                    <a id="5-2-1" href="#" onclick="CreatePlan(this.id)"><em id="5-2-1-Name" class="Name">-</em><em id="5-2-1-Desc"></em></a>
+                    <a id="6-2-1" href="#" onclick="CreatePlan(this.id)"><em id="6-2-1-Name" class="Name">-</em><em id="6-2-1-Desc"></em></a>
+                    <a id="7-2-1" href="#" onclick="CreatePlan(this.id)"><em id="7-2-1-Name" class="Name">-</em><em id="7-2-1-Desc"></em></a>
+                    <a id="1-3-1" href="#" onclick="CreatePlan(this.id)"><em id="1-3-1-Name" class="Name">-</em><em id="1-3-1-Desc"></em></a>
+                    <a id="2-3-1" href="#" onclick="CreatePlan(this.id)"><em id="2-3-1-Name" class="Name">-</em><em id="2-3-1-Desc"></em></a>
+                    <a id="3-3-1" href="#" onclick="CreatePlan(this.id)"><em id="3-3-1-Name" class="Name">-</em><em id="3-3-1-Desc"></em></a>
+                    <a id="4-3-1" href="#" onclick="CreatePlan(this.id)"><em id="4-3-1-Name" class="Name">-</em><em id="4-3-1-Desc"></em></a>
+                    <a id="5-3-1" href="#" onclick="CreatePlan(this.id)"><em id="5-3-1-Name" class="Name">-</em><em id="5-3-1-Desc"></em></a>
+                    <a id="6-3-1" href="#" onclick="CreatePlan(this.id)"><em id="6-3-1-Name" class="Name">-</em><em id="6-3-1-Desc"></em></a>
+                    <a id="7-3-1" href="#" onclick="CreatePlan(this.id)"><em id="7-3-1-Name" class="Name">-</em><em id="7-3-1-Desc"></em></a>
+                    <a id="1-4-1" href="#" onclick="CreatePlan(this.id)"><em id="1-4-1-Name" class="Name">-</em><em id="1-4-1-Desc"></em></a>
+                    <a id="2-4-1" href="#" onclick="CreatePlan(this.id)"><em id="2-4-1-Name" class="Name">-</em><em id="2-4-1-Desc"></em></a>
+                    <a id="3-4-1" href="#" onclick="CreatePlan(this.id)"><em id="3-4-1-Name" class="Name">-</em><em id="3-4-1-Desc"></em></a>
+                    <a id="4-4-1" href="#" onclick="CreatePlan(this.id)"><em id="4-4-1-Name" class="Name">-</em><em id="4-4-1-Desc"></em></a>
+                    <a id="5-4-1" href="#" onclick="CreatePlan(this.id)"><em id="5-4-1-Name" class="Name">-</em><em id="5-4-1-Desc"></em></a>
+                    <a id="6-4-1" href="#" onclick="CreatePlan(this.id)"><em id="6-4-1-Name" class="Name">-</em><em id="6-4-1-Desc"></em></a>
+                    <a id="7-4-1" href="#" onclick="CreatePlan(this.id)"><em id="7-4-1-Name" class="Name">-</em><em id="7-4-1-Desc"></em></a>
+                    <a id="1-5-1" href="#" onclick="CreatePlan(this.id)"><em id="1-5-1-Name" class="Name">-</em><em id="1-5-1-Desc"></em></a>
+                    <a id="2-5-1" href="#" onclick="CreatePlan(this.id)"><em id="2-5-1-Name" class="Name">-</em><em id="2-5-1-Desc"></em></a>
+                    <a id="3-5-1" href="#" onclick="CreatePlan(this.id)"><em id="3-5-1-Name" class="Name">-</em><em id="3-5-1-Desc"></em></a>
+                    <a id="4-5-1" href="#" onclick="CreatePlan(this.id)"><em id="4-5-1-Name" class="Name">-</em><em id="4-5-1-Desc"></em></a>
+                    <a id="5-5-1" href="#" onclick="CreatePlan(this.id)"><em id="5-5-1-Name" class="Name">-</em><em id="5-5-1-Desc"></em></a>
+                    <a id="6-5-1" href="#" onclick="CreatePlan(this.id)"><em id="6-5-1-Name" class="Name">-</em><em id="6-5-1-Desc"></em></a>
+                    <a id="7-5-1" href="#" onclick="CreatePlan(this.id)"><em id="7-5-1-Name" class="Name">-</em><em id="7-5-1-Desc"></em></a>
+                  </div>
+                </div>
+                <div class="Agenda">
+                  <div class="BottomBar">
+                    <div class="Date">
+                      <p id="Day01Name-1" class="Name">Monday</p>
+                      <p id="Day01Number-1" class="Number">01</p>
+                    </div>
+                    <div class="Date">
+                      <p id="Day02Name-1" class="Name">Tuesday</p>
+                      <p id="Day02Number-1" class="Number">01</p>
+                    </div>
+                    <div class="Date">
+                      <p id="Day03Name-1" class="Name">Wednesday</p>
+                      <p id="Day03Number-1" class="Number">01</p>
+                    </div>
+                    <div class="Date">
+                      <p id="Day04Name-1" class="Name">Thursday</p>
+                      <p id="Day04Number-1" class="Number">01</p>
+                    </div>
+                    <div class="Date">
+                      <p id="Day05Name-1" class="Name">Friday</p>
+                      <p id="Day05Number-1" class="Number">01</p>
+                    </div>
+                    <div class="Date">
+                      <p id="Day06Name-1" class="Name">Saturday</p>
+                      <p id="Day06Number-1" class="Number">01</p>
+                    </div>
+                    <div class="Date">
+                      <p id="Day07Name-1" class="Name">Sunday</p>
+                      <p id="Day07Number-1" class="Number">01</p>
+                    </div>
+                  </div>
+                  <div class="GridAgenda">
+                    <a id="1-1-0" href="#" onclick="CreatePlan(this.id)"><em id="1-1-0-Name" class="Name">-</em><em id="1-1-0-Desc"></em></a>
+                    <a id="2-1-0" href="#" onclick="CreatePlan(this.id)"><em id="2-1-0-Name" class="Name">-</em><em id="2-1-0-Desc"></em></a>
+                    <a id="3-1-0" href="#" onclick="CreatePlan(this.id)"><em id="3-1-0-Name" class="Name">-</em><em id="3-1-0-Desc"></em></a>
+                    <a id="4-1-0" href="#" onclick="CreatePlan(this.id)"><em id="4-1-0-Name" class="Name">-</em><em id="4-1-0-Desc"></em></a>
+                    <a id="5-1-0" href="#" onclick="CreatePlan(this.id)"><em id="5-1-0-Name" class="Name">-</em><em id="5-1-0-Desc"></em></a>
+                    <a id="6-1-0" href="#" onclick="CreatePlan(this.id)"><em id="6-1-0-Name" class="Name">-</em><em id="6-1-0-Desc"></em></a>
+                    <a id="7-1-0" href="#" onclick="CreatePlan(this.id)"><em id="7-1-0-Name" class="Name">-</em><em id="7-1-0-Desc"></em></a>
+                    <a id="1-2-0" href="#" onclick="CreatePlan(this.id)"><em id="1-2-0-Name" class="Name">-</em><em id="1-2-0-Desc"></em></a>
+                    <a id="2-2-0" href="#" onclick="CreatePlan(this.id)"><em id="2-2-0-Name" class="Name">-</em><em id="2-2-0-Desc"></em></a>
+                    <a id="3-2-0" href="#" onclick="CreatePlan(this.id)"><em id="3-2-0-Name" class="Name">-</em><em id="3-2-0-Desc"></em></a>
+                    <a id="4-2-0" href="#" onclick="CreatePlan(this.id)"><em id="4-2-0-Name" class="Name">-</em><em id="4-2-0-Desc"></em></a>
+                    <a id="5-2-0" href="#" onclick="CreatePlan(this.id)"><em id="5-2-0-Name" class="Name">-</em><em id="5-2-0-Desc"></em></a>
+                    <a id="6-2-0" href="#" onclick="CreatePlan(this.id)"><em id="6-2-0-Name" class="Name">-</em><em id="6-2-0-Desc"></em></a>
+                    <a id="7-2-0" href="#" onclick="CreatePlan(this.id)"><em id="7-2-0-Name" class="Name">-</em><em id="7-2-0-Desc"></em></a>
+                    <a id="1-3-0" href="#" onclick="CreatePlan(this.id)"><em id="1-3-0-Name" class="Name">-</em><em id="1-3-0-Desc"></em></a>
+                    <a id="2-3-0" href="#" onclick="CreatePlan(this.id)"><em id="2-3-0-Name" class="Name">-</em><em id="2-3-0-Desc"></em></a>
+                    <a id="3-3-0" href="#" onclick="CreatePlan(this.id)"><em id="3-3-0-Name" class="Name">-</em><em id="3-3-0-Desc"></em></a>
+                    <a id="4-3-0" href="#" onclick="CreatePlan(this.id)"><em id="4-3-0-Name" class="Name">-</em><em id="4-3-0-Desc"></em></a>
+                    <a id="5-3-0" href="#" onclick="CreatePlan(this.id)"><em id="5-3-0-Name" class="Name">-</em><em id="5-3-0-Desc"></em></a>
+                    <a id="6-3-0" href="#" onclick="CreatePlan(this.id)"><em id="6-3-0-Name" class="Name">-</em><em id="6-3-0-Desc"></em></a>
+                    <a id="7-3-0" href="#" onclick="CreatePlan(this.id)"><em id="7-3-0-Name" class="Name">-</em><em id="7-3-0-Desc"></em></a>
+                    <a id="1-4-0" href="#" onclick="CreatePlan(this.id)"><em id="1-4-0-Name" class="Name">-</em><em id="1-4-0-Desc"></em></a>
+                    <a id="2-4-0" href="#" onclick="CreatePlan(this.id)"><em id="2-4-0-Name" class="Name">-</em><em id="2-4-0-Desc"></em></a>
+                    <a id="3-4-0" href="#" onclick="CreatePlan(this.id)"><em id="3-4-0-Name" class="Name">-</em><em id="3-4-0-Desc"></em></a>
+                    <a id="4-4-0" href="#" onclick="CreatePlan(this.id)"><em id="4-4-0-Name" class="Name">-</em><em id="4-4-0-Desc"></em></a>
+                    <a id="5-4-0" href="#" onclick="CreatePlan(this.id)"><em id="5-4-0-Name" class="Name">-</em><em id="5-4-0-Desc"></em></a>
+                    <a id="6-4-0" href="#" onclick="CreatePlan(this.id)"><em id="6-4-0-Name" class="Name">-</em><em id="6-4-0-Desc"></em></a>
+                    <a id="7-4-0" href="#" onclick="CreatePlan(this.id)"><em id="7-4-0-Name" class="Name">-</em><em id="7-4-0-Desc"></em></a>
+                    <a id="1-5-0" href="#" onclick="CreatePlan(this.id)"><em id="1-5-0-Name" class="Name">-</em><em id="1-5-0-Desc"></em></a>
+                    <a id="2-5-0" href="#" onclick="CreatePlan(this.id)"><em id="2-5-0-Name" class="Name">-</em><em id="2-5-0-Desc"></em></a>
+                    <a id="3-5-0" href="#" onclick="CreatePlan(this.id)"><em id="3-5-0-Name" class="Name">-</em><em id="3-5-0-Desc"></em></a>
+                    <a id="4-5-0" href="#" onclick="CreatePlan(this.id)"><em id="4-5-0-Name" class="Name">-</em><em id="4-5-0-Desc"></em></a>
+                    <a id="5-5-0" href="#" onclick="CreatePlan(this.id)"><em id="5-5-0-Name" class="Name">-</em><em id="5-5-0-Desc"></em></a>
+                    <a id="6-5-0" href="#" onclick="CreatePlan(this.id)"><em id="6-5-0-Name" class="Name">-</em><em id="6-5-0-Desc"></em></a>
+                    <a id="7-5-0" href="#" onclick="CreatePlan(this.id)"><em id="7-5-0-Name" class="Name">-</em><em id="7-5-0-Desc"></em></a>
+                  </div>
+                </div>
+        </main>
+    </div>
+</body>
+</html>
+<script>
+ // Select the necessary elements
+const sidebarTrigger = document.getElementById('sidebar_trigger');
+const sidebarNav = document.querySelector('.s-sidebar__nav');
+const layoutContent = document.querySelector('.s-layout__content');
+
+// Add click event listener to the toggle button
+sidebarTrigger.addEventListener('click', (e) => {
+  e.preventDefault(); // Prevent default behavior of the anchor element
+  sidebarNav.classList.toggle('s-sidebar__nav--open');
+
+  // Toggle the margin-left property to push content to the right when the sidebar is open
+  layoutContent.style.marginLeft = sidebarNav.classList.contains('s-sidebar__nav--open') ? '15em' : '0';
+});
+
+// Add click event listener to the document
+document.addEventListener('click', (e) => {
+  // Check if the clicked element is outside the sidebar and toggle button
+  if (!sidebarNav.contains(e.target) && e.target !== sidebarTrigger) {
+    // Reset the margin-left when the sidebar is closed
+    layoutContent.style.marginLeft = '0';
+    sidebarNav.classList.remove('s-sidebar__nav--open');
+  }
+});
+
+</script>

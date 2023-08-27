@@ -1,0 +1,96 @@
+:root {
+    --Background-purple:#0C1C1D;
+	--Fire-purple:#0E6D71;
+	--Highlight-purple:#063032;
+	--White-purple: #0E6D71;
+	--text: #E4FAFC;
+}
+*{
+	background-color: var(--Background-purple);
+}
+a:link{
+	text-decoration: none;
+	color: var(--text);
+}
+a:link { text-decoration: none; }
+
+h1{
+	font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-weight: bolder;
+	font-size: 75px;
+	margin-bottom: -12px;
+	color: var(--White-purple);
+}
+h2{
+	font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-weight: bolder;
+	font-size: 60px;
+	margin-top: -12px;
+	margin-bottom: -8px;
+	color: var(--text);
+}
+#login-box{
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+input[type=text]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  	border: none;
+  	outline: none;
+  	border-bottom: 0.2em solid var(--Fire-purple);
+  	background: var(--Highlight-purple);
+  	border-radius: 0.2em 0.2em 0 0;
+  	padding: 0.4em;
+  	color: var(--text);
+	font-weight: bolder;
+	font-size: 20px;
+	margin-top: 10px;
+	display: block;
+}
+input[type=password]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  	border: none;
+  	outline: none;
+  	border-bottom: 0.2em solid var(--Fire-purple);
+  	background: var(--Highlight-purple);
+  	border-radius: 0.2em 0.2em 0 0;
+  	padding: 0.4em;
+  	color: var(--text);
+	font-weight: bolder;
+	font-size: 20px;
+	margin-top: 10px;
+	display: block;
+}
+#login-buttons{
+	position: absolute;
+	align-items: center;
+}
+input[type=submit] {
+	-webkit-appearance: none;
+    -moz-appearance: none;
+	appearance: none;
+  	border: 0.2em solid var(--Fire-purple);
+  	background: var(--Highlight-purple);
+  	padding: 0.5em 0.7em;
+  	color: var(--text);
+  	border-radius: 2em;
+  	transition: 0.5s;
+	font-weight: bolder;
+	font-size: 20px;
+	margin-top: 10px;
+}
+input[type=submit]:hover {
+    background: var(--Fire-purple);
+	color: var(--Highlight-purple);
+	font-weight: bolder;
+}
+input::placeholder{
+	color: var(--text);
+}
