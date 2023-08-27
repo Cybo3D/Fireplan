@@ -37,7 +37,7 @@ onAuthStateChanged(auth, (user) => {
     } else {
         // User is signed out
         // ...
-        window.location.href = "/Signup.html";
+        // window.location.href = "/Signup.html";
     }
 });
 
