@@ -570,7 +570,7 @@ function ResetPlans(){
 }
 
 function isAlreadyThere(weekDay, priority, top){
-  if(document.getElementById(weekDay + "-" + priority + "-" + Top + "-Name").innerHTML != "-" || document.getElementById(weekDay + "-" + priority + "-" + Top + "-Desc").innerHTML != "-"){
+  if(document.getElementById(weekDay + "-" + priority + "-" + Top + "-Name").innerHTML != "-" && document.getElementById(weekDay + "-" + priority + "-" + Top + "-Desc").innerHTML != "-"){
     return true;
   }else{
     return false;
