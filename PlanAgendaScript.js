@@ -188,6 +188,7 @@ function CreatePlan(id)
 
     CreateId = Name + "|" + Description + "|" + WeekDay + "|" + Year + "|" + Month + "|" + Week + "|" + Day + "|" + Priority + "|" + Top + "|" + Planned + "|" + Done + "|" + Color;
     CreatePlanExecute(CreateId);
+    window.location.reload();
 }
 
 
