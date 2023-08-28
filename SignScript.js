@@ -40,7 +40,7 @@ signup.addEventListener('click',(e) => {
             username: username,
             email: email,
         }).then( () => {
-            window.location.href = "./index.html"; 
+            window.location.href = "./"; 
         }   
         );
         
@@ -72,7 +72,7 @@ login.addEventListener('click',(e) => {
         update(ref(database, 'users/' + user.uid),{
             last_login: dt
         }).then(() => {
-            window.location.href = "./index.html"; 
+            window.location.href = "./"; 
         }
         );
 
@@ -106,7 +106,7 @@ function onLoad() {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
         const uid =  auth.currentUser.uid;
-        window.location.href = "./index.html";
+        window.location.href = "./";
         // ...
     } else {
         // User is signed out
