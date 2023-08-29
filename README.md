@@ -6,7 +6,7 @@
 3. 
 
 ## |ToDo
-1. fix bug 1
+1. <ins>fix bug 1</ins>
 2. fix bug 2
 3. add related stuff button in the nav
 4. release android app to google play store
