@@ -131,7 +131,7 @@ function SetWeekDays(){
 
   document.getElementById("Month").innerHTML = Month;
   document.getElementById("Year").innerHTML = Year;
-  document.getElementById("Week").innerHTML = "Week " + Week;
+  //document.getElementById("Week").innerHTML = "Week " + Week;
 }
 
 function CreatePlan(id)
@@ -298,8 +298,7 @@ function CheckMonthEnd(date, Day, DayOfTheWeek) {
 
 function SetMonth() {
   // Check if both the first day (day01) and the last day (day07) of the displayed week belong to the same month
-
-  if (day01 <= 7) {
+  if ((!(day01 > MaxDayNext) && !(day02 > MaxDayNext -1)&& !(day03 > MaxDayNext -2)&& !(day04 > MaxDayNext -3)&& !(day05 > MaxDayNext -4)&& !(day06 > MaxDayNext -5)&& !(day07 > MaxDayNext -6)) && day01 < 7) {
 
     if (NextBack == 1) {
 
@@ -308,12 +307,10 @@ function SetMonth() {
         MonthIndex = 1;
         Year += 1;
         Week = 1;
-
-        day01 = null;
       }
     }
     GetMonthIndex();
-  }else if(day07 >= MaxDayBack - 7){
+  }else if(day01 >= MaxDayBack - 6){
 
     if (NextBack == 0) {
       MonthIndex -= 1;
@@ -321,8 +318,6 @@ function SetMonth() {
         MonthIndex = 12;
         Year -= 1;
         Week = 52;
-
-        day01 = null;
       }
     }
     GetMonthIndex();
@@ -607,7 +602,7 @@ function UpdatePlans(id){
   //console.log("Year: " + typeof(GetYear) + "month: " + typeof(GetMonth) + "Week: " + typeof(GetWeek));
   if (Year != parseInt(GetYear)) return;
   if (Month != GetMonth) return;
-  if (Week != parseInt(GetWeek)) return;
+  //if (Week != parseInt(GetWeek)) return;
   //console.log("We have a candidate");
 
   if(day01 == GetDay && GetWeekDay == 1){
@@ -634,6 +629,9 @@ function GetData(planIds) {
   GetId = planIds;
   console.log(GetId);
   GetId.forEach(UpdatePlans);
+
+  WeekBack();
+  WeekNext();
 }
 
 function onLoad() {
