@@ -4,6 +4,7 @@
 	--Highlight-purple:#063032;
 	--White-purple: #0E6D71;
 	--text: #E4FAFC;
+	--textHover: #d7eeeec5;
 }
 *{
 	background-color: var(--Background-purple);
@@ -13,6 +14,23 @@ a:link{
 	color: var(--text);
 }
 a:link { text-decoration: none; }
+
+.a {
+	font-family: sans-serif;
+    text-decoration: none;
+    color: inherit;
+    color: var(--text);
+    font-weight: bold;
+    margin-top: 2%;
+    margin-bottom: 2%;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+  .a:hover{
+    color: var(--textHover);
+  }
 
 h1{
 	font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;

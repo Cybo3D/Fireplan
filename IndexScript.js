@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js";
 import { getDatabase, set, ref, get, update } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail, deleteUser } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 import { push } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -49,6 +49,39 @@ logout.addEventListener('click',(e) => {
     // An error happened.
     alert('error with logging out');
 });
+});
+changePassword.addEventListener('click', (e) => {
+    const emailInput = prompt("Enter your email:");
+    
+    if (emailInput) {
+        const auth = getAuth();
+        sendPasswordResetEmail(auth, emailInput)
+        .then(() => {
+            // Password reset email sent!
+            // ..
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // Handle error
+        });
+    }
+});
+deleteAccount.addEventListener('click', (e) => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    // Show a confirmation dialog
+    const isConfirmed = confirm("Are you sure you want to delete your account? This action cannot be undone.");
+
+    if (isConfirmed) {
+        deleteUser(user).then(() => {
+            // User deleted.
+        }).catch((error) => {
+            // An error occurred
+            // ...
+        });
+    }
 });
 
 export async function myFunction(CreateId) {

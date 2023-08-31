@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js";
 import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -88,15 +88,22 @@ login.addEventListener('click',(e) => {
 
 const user = auth.currentUser;
 
-logout.addEventListener('click',(e) => {
-    const auth = getAuth();
-    signOut(auth).then(() => {
-    // Sign-out successful.
-    alert('loged out');
-}).catch((error) => {
-    // An error happened.
-    alert('error with logging out');
-});
+forgotPassword.addEventListener('click', (e) => {
+    const emailInput = prompt("Enter your email:");
+    
+    if (emailInput) {
+        const auth = getAuth();
+        sendPasswordResetEmail(auth, emailInput)
+        .then(() => {
+            // Password reset email sent!
+            // ..
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // Handle error
+        });
+    }
 });
 
 function onLoad() {

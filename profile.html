@@ -5,8 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PyroPlanner: Profile</title>
     <link rel = "icon" href = "./P.svg" type = "image/x-icon">
+    <link rel="stylesheet" href="projectProfile.css">
+    <script type="module" src="IndexScript.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-    
+    <div class="s-layout">
+        <!-- Sidebar -->
+        <div class="s-layout__sidebar">
+            <a id="sidebar_trigger"class="s-sidebar__trigger" href="" onclick="toggleSidebar()">
+                <ion-icon id="icon" size="large" name="menu" >
+            </a>
+        
+          <nav class="s-sidebar__nav">
+             <ul>
+                <li>
+                    <a class="s-sidebar__nav-link" href="./profile.html">
+                      <em>Profile</em>
+                      <ion-icon id="icon" size="large" name="person-circle"></ion-icon>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" href="./">
+                        <em>Agenda</em>
+                        <ion-icon id="icon" size="large" name="calendar"></ion-icon>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" href="./projects.html">
+                        <em>Related Projects</em>
+                        <ion-icon id="icon" size="large" name="folder-open"></ion-icon>
+                    </a>
+                </li>
+                <li>
+                    <a id="logout"class="s-sidebar__nav-link" href="#0">
+                        <em>LogOut</em>
+                        <ion-icon id="icon" size="large" name="person-sharp"></ion-icon>
+                    </a>
+                </li>
+             </ul>
+          </nav>
+        </div>
+        
+        <!-- Content -->
+        <main class="s-layout__content">
+            <!-- <a class="a" href="">Change Username:</a> -->
+            <a class="a" href="#" id="changePassword">Change Password</a>
+            <a class="a" href="#" id="deleteAccount">Delete Account</a>
+        </main>
+    </div>
 </body>
 </html>
+<script>
+    // Select the necessary elements
+   const sidebarTrigger = document.getElementById('sidebar_trigger');
+   const sidebarNav = document.querySelector('.s-sidebar__nav');
+   const layoutContent = document.querySelector('.s-layout__content');
+   
+   // Add click event listener to the toggle button
+   sidebarTrigger.addEventListener('click', (e) => {
+     e.preventDefault(); // Prevent default behavior of the anchor element
+     sidebarNav.classList.toggle('s-sidebar__nav--open');
+   
+     // Toggle the margin-left property to push content to the right when the sidebar is open
+     layoutContent.style.marginLeft = sidebarNav.classList.contains('s-sidebar__nav--open') ? '15em' : '0';
+   });
+   
+   // Add click event listener to the document
+   document.addEventListener('click', (e) => {
+     // Check if the clicked element is outside the sidebar and toggle button
+     if (!sidebarNav.contains(e.target) && e.target !== sidebarTrigger) {
+       // Reset the margin-left when the sidebar is closed
+       layoutContent.style.marginLeft = '0';
+       sidebarNav.classList.remove('s-sidebar__nav--open');
+     }
+   });
+   
+</script>
