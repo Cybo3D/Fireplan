@@ -364,24 +364,86 @@ function SetStartWeek() {
   switch (weekDay) {
     case "Mon":
       startingDay = day;
+
+      day01 = day;
+      day02 = CheckMonthEnd(date, day01 + 1, 1);
+      day03 = CheckMonthEnd(date, day02 + 1, 1);
+      day04 = CheckMonthEnd(date, day03 + 1, 1);
+      day05 = CheckMonthEnd(date, day04 + 1, 1);
+      day06 = CheckMonthEnd(date, day05 + 1, 1);
+      day07 = CheckMonthEnd(date, day06 + 1, 1);
       break;
     case "Tue":
       startingDay = day - 1;
+
+      day01 = CheckMonthEnd(date, day02 - 1, 1);
+      day02 = day;
+      day03 = CheckMonthEnd(date, day02 + 1, 1);
+      day04 = CheckMonthEnd(date, day03 + 1, 1);
+      day05 = CheckMonthEnd(date, day04 + 1, 1);
+      day06 = CheckMonthEnd(date, day05 + 1, 1);
+      day07 = CheckMonthEnd(date, day06 + 1, 1);
+
       break;
     case "Wed":
       startingDay = day - 2;
+
+      day01 = CheckMonthEnd(date, day02 - 1, 1);
+      day02 = CheckMonthEnd(date, day03 - 1, 1);
+      day03 = day;
+      day04 = CheckMonthEnd(date, day03 + 1, 1);
+      day05 = CheckMonthEnd(date, day04 + 1, 1);
+      day06 = CheckMonthEnd(date, day05 + 1, 1);
+      day07 = CheckMonthEnd(date, day06 + 1, 1);
+
       break;
     case "Thu":
       startingDay = day - 3;
+
+      day01 = CheckMonthEnd(date, day02 - 1, 1);
+      day02 = CheckMonthEnd(date, day03 - 1, 1);
+      day03 = CheckMonthEnd(date, day04 - 1, 1);
+      day04 = day;
+      day05 = CheckMonthEnd(date, day04 + 1, 1);
+      day06 = CheckMonthEnd(date, day05 + 1, 1);
+      day07 = CheckMonthEnd(date, day06 + 1, 1);
+
       break;
     case "Fri":
       startingDay = day - 4;
+
+      day01 = day;
+      day02 = CheckMonthEnd(date, day01 + 1, 1);
+      day03 = CheckMonthEnd(date, day02 + 1, 1);
+      day04 = CheckMonthEnd(date, day03 + 1, 1);
+      day05 = CheckMonthEnd(date, day04 + 1, 1);
+      day06 = CheckMonthEnd(date, day05 + 1, 1);
+      day07 = CheckMonthEnd(date, day06 + 1, 1);
+
       break;
     case "Sat":
       startingDay = day - 5;
+
+      day01 = CheckMonthEnd(date, day02 - 1, 1);
+      day02 = CheckMonthEnd(date, day03 - 1, 1);
+      day03 = CheckMonthEnd(date, day04 - 1, 1);
+      day04 = CheckMonthEnd(date, day05 - 1, 1);
+      day05 = CheckMonthEnd(date, day06 - 1, 1);
+      day06 = day;
+      day07 = CheckMonthEnd(date, day06 + 1, 1);
+
       break;
     case "Sun":
       startingDay = day - 6;
+
+      day01 = CheckMonthEnd(date, day02 - 1, 1);
+      day02 = CheckMonthEnd(date, day03 - 1, 1);
+      day03 = CheckMonthEnd(date, day04 - 1, 1);
+      day04 = CheckMonthEnd(date, day05 - 1, 1);
+      day05 = CheckMonthEnd(date, day06 - 1, 1);
+      day06 = CheckMonthEnd(date, day07 - 1, 1);
+      day07 = day;
+
       break;
     default:
       startingDay = day;
