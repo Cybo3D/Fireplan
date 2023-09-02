@@ -464,6 +464,9 @@ function SetStartWeek() {
   Week = GetWeek();
   SetMonthIndex();
   SetWeekDays();
+  
+  WeekBack();
+  WeekNext();
 }
 
 function ResetPlans(){
