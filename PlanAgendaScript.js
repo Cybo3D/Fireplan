@@ -291,31 +291,33 @@ function CheckMonthEnd(date, Day, DayOfTheWeek) {
     return Day - MaxDayNext;
   } else if (Day < 1) {
     NextBack = 0;
-    if (Day == 0) {
-      return MaxDayBack;
-    } else if (Day == -1) {
-      if (DayOfTheWeek === 5) { // Friday
-        return MaxDayBack - 3; // Adjust for Friday
-      } else if (DayOfTheWeek === 6) { // Saturday
-        return MaxDayBack - 4; // Adjust for Saturday
-      } else {
-        return MaxDayBack - 1;
-      }
-    } else if (Day == -2) {
-      if (DayOfTheWeek === 6) { // Saturday
-        return MaxDayBack - 3; // Adjust for Saturday
-      } else {
-        return MaxDayBack - 2;
-      }
-    } else if (Day == -3) {
-      if (DayOfTheWeek === 6) { // Saturday
-        return MaxDayBack - 2; // Adjust for Saturday
-      } else {
-        return MaxDayBack - 3;
-      }
-    } else {
-      return Day;
-    }
+    // if (Day == 0) {
+    //   return MaxDayBack;
+    // } else if (Day == -1) {
+    //   if (DayOfTheWeek === 5) { // Friday
+    //     return MaxDayBack - 3; // Adjust for Friday
+    //   } else if (DayOfTheWeek === 6) { // Saturday
+    //     return MaxDayBack - 4; // Adjust for Saturday
+    //   } else {
+    //     return MaxDayBack - 1;
+    //   }
+    // } else if (Day == -2) {
+    //   if (DayOfTheWeek === 6) { // Saturday
+    //     return MaxDayBack - 3; // Adjust for Saturday
+    //   } else {
+    //     return MaxDayBack - 2;
+    //   }
+    // } else if (Day == -3) {
+    //   if (DayOfTheWeek === 6) { // Saturday
+    //     return MaxDayBack - 2; // Adjust for Saturday
+    //   } else {
+    //     return MaxDayBack - 3;
+    //   }
+    // } else {
+    //   return Day;
+    // }
+
+    return MaxDayBack + Day;
   } else {
     return Day;
   }
