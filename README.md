@@ -4,7 +4,7 @@
 1. ~~month switching back is working wrong~~
 2. ~~year switching doesnt really work~~
 3. ~~year switching not on day01 but on the real day~~
-4. weeks working weird in the next year
+4. when it is next month but previeus month is in the week all the days are NaN
 5. 
 
 ## |ToDo

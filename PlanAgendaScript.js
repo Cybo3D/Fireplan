@@ -9,7 +9,7 @@ var MonthIndex;
 var NextBack;
 
 var MaxDayNext;
-var MaxDayBack;
+var MaxDayBack = 0;
 
 var Top;///
 var Name;///
@@ -29,6 +29,7 @@ var GetId;//
 
 var alreadyName;
 var alreadyDescription;
+var startDay;
 
 function SetMonthIndex(){
   if(Month == "Jan"){
@@ -55,7 +56,7 @@ function SetMonthIndex(){
   if(Month == "Aug"){
     MonthIndex = 8;
   }
-  if(Month == "Sept"){
+  if(Month == "Sep"){
     MonthIndex = 9;
   }
   if(Month == "Oct"){
@@ -94,7 +95,7 @@ function GetMonthIndex(){
     Month = "Aug";
   }
   if(MonthIndex == 9){
-    Month = "Sept";
+    Month = "Sep";
   }
   if(MonthIndex == 10){
     Month = "Oct";
@@ -271,7 +272,7 @@ function CheckMonthEnd(date, Day, DayOfTheWeek) {
   } else if (Month == "Aug") {
     MaxDayNext = 31;
     MaxDayBack = 31;
-  } else if (Month == "Sept") {
+  } else if (Month == "Sep") {
     MaxDayNext = 30;
     MaxDayBack = 31;
   } else if (Month == "Oct") {
@@ -290,11 +291,36 @@ function CheckMonthEnd(date, Day, DayOfTheWeek) {
     return Day - MaxDayNext;
   } else if (Day < 1) {
     NextBack = 0;
-    return MaxDayBack + Day;
+    if (Day == 0) {
+      return MaxDayBack;
+    } else if (Day == -1) {
+      if (DayOfTheWeek === 5) { // Friday
+        return MaxDayBack - 3; // Adjust for Friday
+      } else if (DayOfTheWeek === 6) { // Saturday
+        return MaxDayBack - 4; // Adjust for Saturday
+      } else {
+        return MaxDayBack - 1;
+      }
+    } else if (Day == -2) {
+      if (DayOfTheWeek === 6) { // Saturday
+        return MaxDayBack - 3; // Adjust for Saturday
+      } else {
+        return MaxDayBack - 2;
+      }
+    } else if (Day == -3) {
+      if (DayOfTheWeek === 6) { // Saturday
+        return MaxDayBack - 2; // Adjust for Saturday
+      } else {
+        return MaxDayBack - 3;
+      }
+    } else {
+      return Day;
+    }
   } else {
     return Day;
   }
 }
+
 
 function SetMonth() {
   // Check if both the first day (day01) and the last day (day07) of the displayed week belong to the same month
@@ -338,28 +364,28 @@ function SetStartWeek() {
       startingDay = day;
       break;
     case "Tue":
-      startingDay = CheckMonthEnd(date, day - 1, 1);
+      startingDay = day - 1;
       break;
     case "Wed":
-      startingDay = CheckMonthEnd(date, day - 2, 1);
+      startingDay = day - 2;
       break;
     case "Thu":
-      startingDay = CheckMonthEnd(date, day - 3, 1);
+      startingDay = day - 3;
       break;
     case "Fri":
-      startingDay = CheckMonthEnd(date, day - 4, 1);
+      startingDay = day - 4;
       break;
     case "Sat":
-      startingDay = CheckMonthEnd(date, day - 5, 1);
+      startingDay = day - 5;
       break;
     case "Sun":
-      startingDay = CheckMonthEnd(date, day - 6, 1);
+      startingDay = day - 6;
       break;
     default:
       startingDay = day;
       break;
   }
-
+  startDay = weekDay;
   // Set the days for the week
   day01 = startingDay;
   day02 = CheckMonthEnd(date, startingDay + 1, 2);
