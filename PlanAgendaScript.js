@@ -326,7 +326,7 @@ function CheckMonthEnd(date, Day, DayOfTheWeek) {
 
 function SetMonth() {
   // Check if both the first day (day01) and the last day (day07) of the displayed week belong to the same month
-  if ((!(day01 > MaxDayNext) && !(day02 > MaxDayNext -1)&& !(day03 > MaxDayNext -2)&& !(day04 > MaxDayNext -3)&& !(day05 > MaxDayNext -4)&& !(day06 > MaxDayNext -5)&& !(day07 > MaxDayNext -6)) && day01 < 7) {
+  if ((!(day01 > MaxDayNext) && !(day02 > MaxDayNext -1)&& !(day03 > MaxDayNext -2)&& !(day04 > MaxDayNext -3)&& !(day05 > MaxDayNext -4)&& !(day06 > MaxDayNext -5)&& !(day07 > MaxDayNext -6)) && day01 <= 7) {
 
     if (NextBack == 1) {
 
