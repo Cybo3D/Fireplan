@@ -5,8 +5,6 @@
   --Highlight-High-purple:#063032;
   --White-purple: #0E6D71;
   --text: #d7eeee;
-  --Editing-button-color: #b07800;
-  --Done-button-color: #008000;
 }
 *, *::before, *::after {
   box-sizing: border-box;
@@ -167,10 +165,10 @@ a {
 }
 .InfoBar {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   background-color: var(--Fire-purple);
-  width: 20%;
-  height: 12%;
+  width: 15%;
+  height: 10%;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
@@ -195,7 +193,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 80%;
+  width: 60%;
   height: calc(100% - 20%); /* Deduct twice the padding (20px on top + 20px on bottom) from the height */
   background-color: var(--Highlight-purple);
   grid-column: span 1;
@@ -206,8 +204,7 @@ a {
 }
 .Date > p.Name{
   background-color: var(--Highlight-High-purple);
-  padding: 0%;
-  padding-bottom: 2%;
+  padding: 3%;
   border-radius: 0.5rem;
   width: 60%;
   height: 40%;
@@ -216,19 +213,13 @@ a {
 .Date > p.Number{
   background-color: var(--Highlight-High-purple);
   padding: 5%;
-  padding-top: 1%;
+  padding-top: 3%;
   padding-bottom: 2%;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
   width: 30%;
   height: 40%;
   text-align: center;
-}
-#Edit{
-  background-color: var(--Editing-button-color);
-}
-#Check{
-  background-color: var(--Done-button-color);
 }
 .Agenda{
   width: 100%;
