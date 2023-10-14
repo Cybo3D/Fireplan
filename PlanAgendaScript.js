@@ -1,3 +1,6 @@
+import { CreaId } from "/IndexScript.js"
+
+var date = luxon.DateTime.now();
 var day01 = 1;
 var day02 = 2;
 var day03 = 3;
@@ -7,9 +10,6 @@ var day06 = 6;
 var day07 = 7;
 var MonthIndex;
 var NextBack;
-
-var MaxDayNext;
-var MaxDayBack = 0;
 
 var Top;///
 var Name;///
@@ -31,156 +31,15 @@ var alreadyName;
 var alreadyDescription;
 var startDay;
 
-var IsEditing = false;
-var IsChecking = false;
-
-function SetMonthIndex(){
-  if(Month == "Jan"){
-    MonthIndex = 1;
-  }
-  if(Month == "Feb"){
-    MonthIndex = 2;
-  }
-  if(Month == "Mar"){
-    MonthIndex = 3;
-  }
-  if(Month == "Apr"){
-    MonthIndex = 4;
-  }
-  if(Month == "May"){
-    MonthIndex = 5;
-  }
-  if(Month == "Jun"){
-    MonthIndex = 6;
-  }
-  if(Month == "Jul"){
-    MonthIndex = 7;
-  }
-  if(Month == "Aug"){
-    MonthIndex = 8;
-  }
-  if(Month == "Sep"){
-    MonthIndex = 9;
-  }
-  if(Month == "Oct"){
-    MonthIndex = 10;
-  }
-  if(Month == "Nov"){
-    MonthIndex = 11;
-  }
-  if(Month == "Dec"){
-    MonthIndex = 12;
-  }
-}
-function GetMonthIndex(){
-  if(MonthIndex == 1){
-    Month = "Jan";
-  }
-  if(MonthIndex == 2){
-    Month = "Feb";
-  }
-  if(MonthIndex == 3){
-    Month = "Mar";
-  }
-  if(MonthIndex == 4){
-    Month = "Apr";
-  }
-  if(MonthIndex == 5){
-    Month = "May";
-  }
-  if(MonthIndex == 6){
-    Month = "Jun";
-  }
-  if(MonthIndex == 7){
-    Month = "Jul";
-  }
-  if(MonthIndex == 8){
-    Month = "Aug";
-  }
-  if(MonthIndex == 9){
-    Month = "Sep";
-  }
-  if(MonthIndex == 10){
-    Month = "Oct";
-  }
-  if(MonthIndex == 11){
-    Month = "Nov";
-  }
-  if(MonthIndex == 12){
-    Month = "Dec";
-  }
-}
-
-function SetWeekDays(){
-  document.getElementById("Day01Number-0").innerHTML = day01;
-  document.getElementById("Day01Number-1").innerHTML = day01;
-
-  document.getElementById("Day02Number-0").innerHTML = day02;
-  document.getElementById("Day02Number-1").innerHTML = day02;
-
-  document.getElementById("Day03Number-0").innerHTML = day03;
-  document.getElementById("Day03Number-1").innerHTML = day03;
-
-  document.getElementById("Day04Number-0").innerHTML = day04;
-  document.getElementById("Day04Number-1").innerHTML = day04;
-
-  document.getElementById("Day05Number-0").innerHTML = day05;
-  document.getElementById("Day05Number-1").innerHTML = day05;
-
-  document.getElementById("Day06Number-0").innerHTML = day06;
-  document.getElementById("Day06Number-1").innerHTML = day06;
-
-  document.getElementById("Day07Number-0").innerHTML = day07;
-  document.getElementById("Day07Number-1").innerHTML = day07;
-
-  document.getElementById("Month").innerHTML = Month;
-  document.getElementById("Year").innerHTML = Year;
-  //document.getElementById("Week").innerHTML = "Week " + Week;
-}
-
-function Edit(){
-  if(IsEditing){
-    console.log("not editing anymore")
-
-    IsChecking = false;
-    IsEditing = false;
-  }else{
-    console.log("now editing")
-
-    IsChecking = false;
-    IsEditing = true;
-  }
-}
-
-function Check(){
-  if(IsChecking){
-    console.log("not checking done anymore")
-
-    IsEditing = false;
-    IsChecking = false;
-  }else{
-    console.log("now checking done")
-
-    IsEditing = false;
-    IsChecking = true;
-  }
-}
-
-function CreatePlan(id)
+export function createPlan(id)
 {
     WeekDay = id.split("-")[0];
     Priority = id.split("-")[1];
     Top = id.split("-")[2];
 
-    if(isAlreadyThere(WeekDay, Priority, Top) && !IsChecking && !IsEditing){
+    if(isAlreadyThere(WeekDay, Priority, Top)){
       //check what you wrote there and has function to delete it
       alert("Name: " + document.getElementById(WeekDay + "-" + Priority + "-" + Top + "-Name").innerHTML + "\n" + "Description: " + document.getElementById(WeekDay + "-" + Priority + "-" + Top + "-Desc").innerHTML);
-      return;
-    }else if(IsChecking){
-
-      return;
-    }else if(IsEditing){
-
       return;
     }
 
@@ -224,283 +83,28 @@ function CreatePlan(id)
     //     return;
     // }
 
-    CreateId = Name + "|" + Description + "|" + WeekDay + "|" + Year + "|" + Month + "|" + Week + "|" + Day + "|" + Priority + "|" + Top + "|" + Planned + "|" + Done + "|" + Color;
-    CreatePlanExecute(CreateId);
+    CreateId = Name + "|" + Description + "|" + WeekDay + "|" + Year + "|" + date.toFormat("LLL") + "|" + Week + "|" + Day + "|" + Priority + "|" + Top + "|" + Planned + "|" + Done + "|" + Color;
+    CreaId(CreateId);
     window.location.reload();
 }
-
-
-function CreatePlanExecute(creaId) {
-  return import('./IndexScript.js') // Dynamic import returns a Promise
-    .then(module => {
-      // Access the exported function and call it
-      module.myFunction(creaId);
-    })
-    .catch(error => {
-      console.error('Error loading module:', error);
-    });
-}
-
+weekNext.addEventListener('click',(e) => {
+  WeekNext();
+});
+weekBack.addEventListener('click',(e) => {
+  WeekBack();
+});
 function WeekNext(){
-  var dt = new Date();
-  dt = dt.toString(); // Call the toString() method to convert the Date object to a string
-  var date = dt.split(" ");
-
-  day01 = CheckMonthEnd(date, day01 + 7, 1);
-  day02 = CheckMonthEnd(date, day02 + 7, 2);
-  day03 = CheckMonthEnd(date, day03 + 7, 3);
-  day04 = CheckMonthEnd(date, day04 + 7, 4);
-  day05 = CheckMonthEnd(date, day05 + 7, 5);
-  day06 = CheckMonthEnd(date, day06 + 7, 6);
-  day07 = CheckMonthEnd(date, day07 + 7, 7);
-
-  Week += 1;
-
-  SetMonth();
-  SetWeekDays();
+  date = date.plus({ days: 7 });
+  SetStart();
   ResetPlans();
   GetId.forEach(UpdatePlans);
 }
 
 function WeekBack() {
-  var dt = new Date();
-  dt = dt.toString();
-  var date = dt.split(" ");
-
-  day07 = CheckMonthEnd(date, day07 - 7, 7);
-  day06 = CheckMonthEnd(date, day07 - 1, 6);
-  day05 = CheckMonthEnd(date, day06 - 1, 5);
-  day04 = CheckMonthEnd(date, day05 - 1, 4);
-  day03 = CheckMonthEnd(date, day04 - 1, 3);
-  day02 = CheckMonthEnd(date, day03 - 1, 2);
-  day01 = CheckMonthEnd(date, day02 - 1, 1);
-
-  Week -= 1;
-  NextBack = 0;
-  SetMonth();
-  SetWeekDays();
+  date = date.minus({ days: 7 });
+  SetStart();
   ResetPlans();
   GetId.forEach(UpdatePlans);
-}
-
-function CheckMonthEnd(date, Day, DayOfTheWeek) {
-  if (Month == "Jan") {
-    MaxDayNext = 31;
-    MaxDayBack = 31;
-  } else if (Month == "Feb") {
-    // Check for a leap year
-    MaxDayNext = 29;
-    MaxDayBack = 31;
-  } else if (Month == "Mar") {
-    MaxDayNext = 31;
-    MaxDayBack = 29;
-  } else if (Month == "Apr") {
-    MaxDayNext = 30;
-    MaxDayBack = 31;
-  } else if (Month == "May") {
-    MaxDayNext = 31;
-    MaxDayBack = 30;
-  } else if (Month == "Jun") {
-    MaxDayNext = 30;
-    MaxDayBack = 31;
-  } else if (Month == "Jul") {
-    MaxDayNext = 31;
-    MaxDayBack = 30;
-  } else if (Month == "Aug") {
-    MaxDayNext = 31;
-    MaxDayBack = 31;
-  } else if (Month == "Sep") {
-    MaxDayNext = 30;
-    MaxDayBack = 31;
-  } else if (Month == "Oct") {
-    MaxDayNext = 31;
-    MaxDayBack = 30;
-  } else if (Month == "Nov") {
-    MaxDayNext = 30;
-    MaxDayBack = 31;
-  } else if (Month == "Dec") {
-    MaxDayNext = 31;
-    MaxDayBack = 30;
-  }
-
-  if (Day > MaxDayNext) {
-    NextBack = 1;
-    return Day - MaxDayNext;
-  } else if (Day < 1) {
-    NextBack = 0;
-    // if (Day == 0) {
-    //   return MaxDayBack;
-    // } else if (Day == -1) {
-    //   if (DayOfTheWeek === 5) { // Friday
-    //     return MaxDayBack - 3; // Adjust for Friday
-    //   } else if (DayOfTheWeek === 6) { // Saturday
-    //     return MaxDayBack - 4; // Adjust for Saturday
-    //   } else {
-    //     return MaxDayBack - 1;
-    //   }
-    // } else if (Day == -2) {
-    //   if (DayOfTheWeek === 6) { // Saturday
-    //     return MaxDayBack - 3; // Adjust for Saturday
-    //   } else {
-    //     return MaxDayBack - 2;
-    //   }
-    // } else if (Day == -3) {
-    //   if (DayOfTheWeek === 6) { // Saturday
-    //     return MaxDayBack - 2; // Adjust for Saturday
-    //   } else {
-    //     return MaxDayBack - 3;
-    //   }
-    // } else {
-    //   return Day;
-    // }
-
-    return MaxDayBack + Day;
-  } else {
-    return Day;
-  }
-}
-
-
-function SetMonth() {
-  // Check if both the first day (day01) and the last day (day07) of the displayed week belong to the same month
-  if ((!(day01 > MaxDayNext) && !(day02 > MaxDayNext -1)&& !(day03 > MaxDayNext -2)&& !(day04 > MaxDayNext -3)&& !(day05 > MaxDayNext -4)&& !(day06 > MaxDayNext -5)&& !(day07 > MaxDayNext -6)) && day01 <= 7) {
-
-    if (NextBack == 1) {
-
-      MonthIndex += 1;
-      if (MonthIndex == 13) {
-        MonthIndex = 1;
-        Year += 1;
-        Week = 1;
-      }
-    }
-    GetMonthIndex();
-  }else if(day01 >= MaxDayBack - 6){
-
-    if (NextBack == 0) {
-      MonthIndex -= 1;
-      if (MonthIndex == 0) {
-        MonthIndex = 12;
-        Year -= 1;
-        Week = 52;
-      }
-    }
-    GetMonthIndex();
-  }
-}
-
-function SetStartWeek() {
-  var dt = new Date();
-  dat = dt.toString();
-  var date = dat.split(" ");
-  var day = parseInt(date[2]);
-  var weekDay = date[0];
-
-  // Calculate the starting day of the week based on the current day of the week
-  var startingDay;
-  switch (weekDay) {
-    case "Mon":
-      startingDay = day;
-
-      day01 = day;
-      day02 = CheckMonthEnd(date, day01 + 1, 1);
-      day03 = CheckMonthEnd(date, day02 + 1, 1);
-      day04 = CheckMonthEnd(date, day03 + 1, 1);
-      day05 = CheckMonthEnd(date, day04 + 1, 1);
-      day06 = CheckMonthEnd(date, day05 + 1, 1);
-      day07 = CheckMonthEnd(date, day06 + 1, 1);
-      break;
-    case "Tue":
-      startingDay = day - 1;
-
-      day01 = CheckMonthEnd(date, day02 - 1, 1);
-      day02 = day;
-      day03 = CheckMonthEnd(date, day02 + 1, 1);
-      day04 = CheckMonthEnd(date, day03 + 1, 1);
-      day05 = CheckMonthEnd(date, day04 + 1, 1);
-      day06 = CheckMonthEnd(date, day05 + 1, 1);
-      day07 = CheckMonthEnd(date, day06 + 1, 1);
-
-      break;
-    case "Wed":
-      startingDay = day - 2;
-
-      day01 = CheckMonthEnd(date, day02 - 1, 1);
-      day02 = CheckMonthEnd(date, day03 - 1, 1);
-      day03 = day;
-      day04 = CheckMonthEnd(date, day03 + 1, 1);
-      day05 = CheckMonthEnd(date, day04 + 1, 1);
-      day06 = CheckMonthEnd(date, day05 + 1, 1);
-      day07 = CheckMonthEnd(date, day06 + 1, 1);
-
-      break;
-    case "Thu":
-      startingDay = day - 3;
-
-      day01 = CheckMonthEnd(date, day02 - 1, 1);
-      day02 = CheckMonthEnd(date, day03 - 1, 1);
-      day03 = CheckMonthEnd(date, day04 - 1, 1);
-      day04 = day;
-      day05 = CheckMonthEnd(date, day04 + 1, 1);
-      day06 = CheckMonthEnd(date, day05 + 1, 1);
-      day07 = CheckMonthEnd(date, day06 + 1, 1);
-
-      break;
-    case "Fri":
-      startingDay = day - 4;
-
-      day01 = day;
-      day02 = CheckMonthEnd(date, day01 + 1, 1);
-      day03 = CheckMonthEnd(date, day02 + 1, 1);
-      day04 = CheckMonthEnd(date, day03 + 1, 1);
-      day05 = CheckMonthEnd(date, day04 + 1, 1);
-      day06 = CheckMonthEnd(date, day05 + 1, 1);
-      day07 = CheckMonthEnd(date, day06 + 1, 1);
-
-      break;
-    case "Sat":
-      startingDay = day - 5;
-
-      day01 = CheckMonthEnd(date, day02 - 1, 1);
-      day02 = CheckMonthEnd(date, day03 - 1, 1);
-      day03 = CheckMonthEnd(date, day04 - 1, 1);
-      day04 = CheckMonthEnd(date, day05 - 1, 1);
-      day05 = CheckMonthEnd(date, day06 - 1, 1);
-      day06 = day;
-      day07 = CheckMonthEnd(date, day06 + 1, 1);
-
-      break;
-    case "Sun":
-      startingDay = day - 6;
-
-      day01 = CheckMonthEnd(date, day02 - 1, 1);
-      day02 = CheckMonthEnd(date, day03 - 1, 1);
-      day03 = CheckMonthEnd(date, day04 - 1, 1);
-      day04 = CheckMonthEnd(date, day05 - 1, 1);
-      day05 = CheckMonthEnd(date, day06 - 1, 1);
-      day06 = CheckMonthEnd(date, day07 - 1, 1);
-      day07 = day;
-
-      break;
-    default:
-      startingDay = day;
-      break;
-  }
-  startDay = weekDay;
-  // Set the days for the week
-  day01 = startingDay;
-  day02 = CheckMonthEnd(date, startingDay + 1, 2);
-  day03 = CheckMonthEnd(date, startingDay + 2, 3);
-  day04 = CheckMonthEnd(date, startingDay + 3, 4);
-  day05 = CheckMonthEnd(date, startingDay + 4, 5);
-  day06 = CheckMonthEnd(date, startingDay + 5, 6);
-  day07 = CheckMonthEnd(date, startingDay + 6, 7);
-
-  Month = date[1]; 
-  Year = parseInt(date[3]);
-  Week = GetWeek();
-  SetMonthIndex();
-  SetWeekDays();
 }
 
 function ResetPlans(){
@@ -699,13 +303,6 @@ function isAlreadyThere(weekDay, priority, top){
     return false;
   }
 }
-
-function GetWeek(){
-  currentDate = new Date();
-  startDate = new Date(currentDate.getFullYear(), 0, 1);
-  var days = Math.floor((currentDate - startDate) / (24 * 60 * 60 * 1000));
-  return Math.ceil(days / 7);
-}
 function SetPlan(weekDay, name, description, priority, top, planned, done, color){
   document.getElementById(weekDay +"-" + priority + "-" + top + "-Name").innerHTML = name;
   document.getElementById(weekDay +"-" + priority + "-" + top + "-Desc").innerHTML = description;
@@ -728,10 +325,10 @@ function UpdatePlans(id){
   //console.log("Year: " + typeof(Year) + "month: " + typeof(Month) + "Week: " + typeof(Week));
   //console.log("Year: " + typeof(GetYear) + "month: " + typeof(GetMonth) + "Week: " + typeof(GetWeek));
   if (Year != parseInt(GetYear)) return;
-  if (Month != GetMonth) return;
+  if (date.toFormat("LLL") != GetMonth) return;
   //if (Week != parseInt(GetWeek)) return;
   //console.log("We have a candidate");
-
+  console.log("pass1")
   if(day01 == GetDay && GetWeekDay == 1){
     SetPlan(GetWeekDay, GetName, GetDescription, GetPriority, GetTop, GetPlanned, GetDone, GetColor);
   }else if(day02 == GetDay && GetWeekDay == 2){
@@ -747,23 +344,79 @@ function UpdatePlans(id){
   }else if(day07 == GetDay && GetWeekDay == 7){
     SetPlan(GetWeekDay, GetName, GetDescription, GetPriority, GetTop, GetPlanned, GetDone, GetColor);
   }else{
-    //console.error("something gone wrong");
+    console.error("something gone wrong");
     return;
   }
 }
-function GetData(planIds) {
+export function GetData(planIds) {
   // Your logic to work with the planIds array
   GetId = planIds;
-  console.log(GetId);
   GetId.forEach(UpdatePlans);
-
-  WeekBack();
-  WeekNext();
 }
+function SetWeekDays(){
 
-function onLoad() {
+  if(date.weekday == 1){
+    date = date
+  }
+  if(date.weekday == 2){
+    date = date.minus({ days: 1 })
+  }
+  if(date.weekday == 3){
+    date = date.minus({ days: 2 })
+  }
+  if(date.weekday == 4){
+    date = date.minus({ days: 3 })
+  }
+  if(date.weekday == 5){
+    date = date.minus({ days: 4 })
+  }
+  if(date.weekday == 6){
+    date = date.minus({ days: 5 })
+  }
+  if(date.weekday == 7){
+    date = date.minus({ days: 6 })
+  }
+
+  day01 = date.day
+  day02 = date.plus({ days: 1 }).day
+  day03 = date.plus({ days: 2 }).day
+  day05 = date.plus({ days: 4 }).day
+  day04 = date.plus({ days: 3 }).day
+  day07 = date.plus({ days: 6 }).day
+  day06 = date.plus({ days: 5 }).day
+}
+function SetStart(){
+  //set the current year
+  document.getElementById("Year").innerHTML = date.year;
+  //set the current month
+  document.getElementById("Month").innerHTML = date.toFormat("LLL");
+  //set the current weekdays
+  SetWeekDays();
+
+  document.getElementById("Day01Number-0").innerHTML = day01;
+  document.getElementById("Day01Number-1").innerHTML = day01;
+  document.getElementById("Day02Number-0").innerHTML = day02;
+  document.getElementById("Day02Number-1").innerHTML = day02;
+  document.getElementById("Day03Number-0").innerHTML = day03;
+  document.getElementById("Day03Number-1").innerHTML = day03;
+  document.getElementById("Day04Number-0").innerHTML = day04;
+  document.getElementById("Day04Number-1").innerHTML = day04;
+  document.getElementById("Day05Number-0").innerHTML = day05;
+  document.getElementById("Day05Number-1").innerHTML = day05;
+  document.getElementById("Day06Number-0").innerHTML = day06;
+  document.getElementById("Day06Number-1").innerHTML = day06;
+  document.getElementById("Day07Number-0").innerHTML = day07;
+  document.getElementById("Day07Number-1").innerHTML = day07;
+}
+export function onLoad() {
     //some funcitons here...
+    //console.log(moment().format('ddd'));
+    //console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
+    date = luxon.DateTime.now();
+    Month = date.month;
+    Year = date.year;
+    console.log(date.toString())
+    SetStart();
     console.log('Website Loaded.');
-    SetStartWeek();
 }
 window.onload = onLoad;

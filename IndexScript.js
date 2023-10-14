@@ -4,6 +4,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.0.0/firebase
 import { getDatabase, set, ref, get, update } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail, deleteUser } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 import { push } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+import { GetData, onLoad } from "/PlanAgendaScript.js"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -84,7 +85,7 @@ deleteAccount.addEventListener('click', (e) => {
     }
 });
 
-export async function myFunction(CreateId) {
+export async function CreaId(CreateId) {
     console.log(CreateId);
 
     const user = getAuth().currentUser;
@@ -129,15 +130,17 @@ async function loadPlanIds() {
     }
 }
 
-window.onload = async () => {
-    window.onLoad();
+function onload(){
     onAuthStateChanged(auth, async (user) => {
         if (user) {
             const planIds = await loadPlanIds();
             //console.log('Loaded Plan IDs with Data:', planIds);
-            window.GetData(planIds); // Call the function from the imported script
+            onLoad();
+            GetData(planIds); // Call the function from the imported script
+            console.log("fhdsui")
         } else {
             console.log('User is not signed in');
         }
     });
-};
+}
+window.onload = onload()
