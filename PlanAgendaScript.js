@@ -31,6 +31,9 @@ var alreadyName;
 var alreadyDescription;
 var startDay;
 
+var IsEditing = false;
+var IsChecking = false;
+
 function SetMonthIndex(){
   if(Month == "Jan"){
     MonthIndex = 1;
@@ -135,15 +138,49 @@ function SetWeekDays(){
   //document.getElementById("Week").innerHTML = "Week " + Week;
 }
 
+function Edit(){
+  if(IsEditing){
+    console.log("not editing anymore")
+
+    IsChecking = false;
+    IsEditing = false;
+  }else{
+    console.log("now editing")
+
+    IsChecking = false;
+    IsEditing = true;
+  }
+}
+
+function Check(){
+  if(IsChecking){
+    console.log("not checking done anymore")
+
+    IsEditing = false;
+    IsChecking = false;
+  }else{
+    console.log("now checking done")
+
+    IsEditing = false;
+    IsChecking = true;
+  }
+}
+
 function CreatePlan(id)
 {
     WeekDay = id.split("-")[0];
     Priority = id.split("-")[1];
     Top = id.split("-")[2];
 
-    if(isAlreadyThere(WeekDay, Priority, Top)){
+    if(isAlreadyThere(WeekDay, Priority, Top) && !IsChecking && !IsEditing){
       //check what you wrote there and has function to delete it
       alert("Name: " + document.getElementById(WeekDay + "-" + Priority + "-" + Top + "-Name").innerHTML + "\n" + "Description: " + document.getElementById(WeekDay + "-" + Priority + "-" + Top + "-Desc").innerHTML);
+      return;
+    }else if(IsChecking){
+
+      return;
+    }else if(IsEditing){
+
       return;
     }
 
@@ -710,7 +747,7 @@ function UpdatePlans(id){
   }else if(day07 == GetDay && GetWeekDay == 7){
     SetPlan(GetWeekDay, GetName, GetDescription, GetPriority, GetTop, GetPlanned, GetDone, GetColor);
   }else{
-    console.error("something gone wrong");
+    //console.error("something gone wrong");
     return;
   }
 }
