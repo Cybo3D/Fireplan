@@ -172,6 +172,12 @@ a {
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
+@media (max-width: 1000px) {
+  .InfoBar {
+    width: 30%;
+    height: 10%;
+  }
+}
 .TopBar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);

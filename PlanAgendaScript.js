@@ -393,7 +393,7 @@ function SetStart(){
   //set the current month
   document.getElementById("Month").innerHTML = date.toFormat("LLL");
   //set the current week
-  document.getElementById("Week").innerHTML = "Week " + date.weekNumber;
+  document.getElementById("Week").innerHTML = "wk " + date.weekNumber;
   //set the current weekdays
   SetWeekDays();
 
