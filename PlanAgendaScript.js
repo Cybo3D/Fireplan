@@ -54,6 +54,8 @@ export function createPlan(id)
         return;
     }
     //year is already set
+    Year = date.year;
+    Month = date.month;
     //month is already set
     //week is already set
 
@@ -324,11 +326,11 @@ function UpdatePlans(id){
   var GetColor = id.split("|")[11];
   //console.log("Year: " + typeof(Year) + "month: " + typeof(Month) + "Week: " + typeof(Week));
   //console.log("Year: " + typeof(GetYear) + "month: " + typeof(GetMonth) + "Week: " + typeof(GetWeek));
-  if (Year != parseInt(GetYear)) return;
+  if (date.year != parseInt(GetYear)) return;
   if (date.toFormat("LLL") != GetMonth) return;
   //if (Week != parseInt(GetWeek)) return;
   //console.log("We have a candidate");
-  console.log("pass1")
+  //console.log("pass1")
   if(day01 == GetDay && GetWeekDay == 1){
     SetPlan(GetWeekDay, GetName, GetDescription, GetPriority, GetTop, GetPlanned, GetDone, GetColor);
   }else if(day02 == GetDay && GetWeekDay == 2){
@@ -344,7 +346,7 @@ function UpdatePlans(id){
   }else if(day07 == GetDay && GetWeekDay == 7){
     SetPlan(GetWeekDay, GetName, GetDescription, GetPriority, GetTop, GetPlanned, GetDone, GetColor);
   }else{
-    console.error("something gone wrong");
+    //console.error("something gone wrong");
     return;
   }
 }
@@ -390,6 +392,8 @@ function SetStart(){
   document.getElementById("Year").innerHTML = date.year;
   //set the current month
   document.getElementById("Month").innerHTML = date.toFormat("LLL");
+  //set the current week
+  document.getElementById("Week").innerHTML = "Week " + date.weekNumber;
   //set the current weekdays
   SetWeekDays();
 
@@ -407,6 +411,28 @@ function SetStart(){
   document.getElementById("Day06Number-1").innerHTML = day06;
   document.getElementById("Day07Number-0").innerHTML = day07;
   document.getElementById("Day07Number-1").innerHTML = day07;
+
+  if(date.weekNumber == luxon.DateTime.now().weekNumber && date.month == luxon.DateTime.now().month && date.year == luxon.DateTime.now().year){
+    var element0 = document.getElementById("0WeekDay0" + luxon.DateTime.now().weekday);
+    element0.style.backgroundColor = "#0E6D71";
+    element0.firstElementChild.style.backgroundColor = "#0E6D71";
+    element0.lastElementChild.style.backgroundColor = "#0E6D71";
+
+    var element1 = document.getElementById("1WeekDay0" + luxon.DateTime.now().weekday);
+    element1.style.backgroundColor = "#0E6D71";
+    element1.firstElementChild.style.backgroundColor = "#0E6D71";
+    element1.lastElementChild.style.backgroundColor = "#0E6D71";
+  }else{
+    var element0 = document.getElementById("0WeekDay0" + luxon.DateTime.now().weekday);
+    element0.style.backgroundColor = "#063032";
+    element0.firstElementChild.style.backgroundColor = "#063032";
+    element0.lastElementChild.style.backgroundColor = "#063032";
+
+    var element1 = document.getElementById("1WeekDay0" + luxon.DateTime.now().weekday);
+    element1.style.backgroundColor = "#063032";
+    element1.firstElementChild.style.backgroundColor = "#063032";
+    element1.lastElementChild.style.backgroundColor = "#063032";
+  }
 }
 export function onLoad() {
     //some funcitons here...
@@ -415,7 +441,8 @@ export function onLoad() {
     date = luxon.DateTime.now();
     Month = date.month;
     Year = date.year;
-    console.log(date.toString())
+    Week = date.week;
+    //console.log(date.toString())
     SetStart();
     console.log('Website Loaded.');
 }

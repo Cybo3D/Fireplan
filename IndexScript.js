@@ -137,7 +137,7 @@ function onload(){
             //console.log('Loaded Plan IDs with Data:', planIds);
             onLoad();
             GetData(planIds); // Call the function from the imported script
-            console.log("fhdsui")
+            //console.log("fhdsui")
         } else {
             console.log('User is not signed in');
         }

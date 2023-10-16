@@ -201,6 +201,9 @@ a {
   border-radius: 0.5rem;
   color: var(--text);
   font-weight: bolder;
+  outline: var(--Highlight-purple);
+  outline-style:solid ;
+  outline-width: 2px;
 }
 .Date > p.Name{
   background-color: var(--Highlight-High-purple);
