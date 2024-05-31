@@ -19,3 +19,8 @@
 ## |Related project ideas
 1. chrome extension FlameFocus
 2. 
+
+## |screenshots
+![image](https://github.com/Cybo3D/PyroPlanner/assets/97959606/c6a7fb46-2d36-4506-a88a-75ac9bbd9c45)
+![image](https://github.com/Cybo3D/PyroPlanner/assets/97959606/02c95d6b-916d-442a-9ec4-a70cbfc7787f)
+![Screenshot 2024-05-31 111422](https://github.com/Cybo3D/PyroPlanner/assets/97959606/32155539-b38f-4da4-b8cf-54f0b7039bfe)
